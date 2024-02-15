@@ -12,6 +12,11 @@ from data import ClassificationDataset, RegressionDataset
 from torch import nn
 from sklearn.utils import class_weight
 from pathlib import Path
+import os
+
+# choose GPU 
+os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"]="2"
 
 # check for GPUs or CPU
 if torch.cuda.is_available():
@@ -47,8 +52,9 @@ def run_trainer(train_data, dev_data, test_data, model, training_args, class_wei
 
     # create a new directory if it doesn't exist
     final_output_dir = Path("%s" % (training_args.output_dir))
-    assert_dir(final_output_dir)
-    final_output_dir.mkdir()
+   # assert_dir(final_output_dir)
+    if not Path(final_output_dir).exists():
+        final_output_dir.mkdir()
     print("results are saved to %s" % final_output_dir)
 
     training_args.output_dir = final_output_dir
@@ -237,24 +243,12 @@ if __name__ == '__main__':
     # Activate the adapter
     model.train_adapter(model_args.adapter_name)
 
-    if model_args.labels_num == 1:
-        # this means it is a regression task
-
-        train = RegressionDataset(path_to_dataset=data_args.data_dir + "/train.csv",
-                                  label=data_args.label, tokenizer=tokenizer, text_col=data_args.text_col)
-        dev = RegressionDataset(path_to_dataset=data_args.data_dir + "/val.csv",
-                                label=data_args.label, tokenizer=tokenizer, text_col=data_args.text_col)
-        test = RegressionDataset(path_to_dataset=data_args.data_dir + "/test.csv",
-                                 label=data_args.label, tokenizer=tokenizer, text_col=data_args.text_col)
-        run_trainer_regression(train_data=train, dev_data=dev, test_data=test, model=model, training_args=training_args,
-                               model_args=model_args)
-    else:
-        training_args.metric_for_best_model = "macro_f1"
-        train = ClassificationDataset(path_to_dataset=data_args.data_dir + "/train.csv",
+    training_args.metric_for_best_model = "macro_f1"
+    train = ClassificationDataset(path_to_dataset=data_args.data_dir + "/train_en.csv",
                                       label=data_args.label, tokenizer=tokenizer, text_col=data_args.text_col)
-        dev = ClassificationDataset(path_to_dataset=data_args.data_dir + "/val.csv",
+    dev = ClassificationDataset(path_to_dataset=data_args.data_dir + "/val_en.csv",
                                     label=data_args.label, tokenizer=tokenizer, text_col=data_args.text_col)
-        test = ClassificationDataset(path_to_dataset=data_args.data_dir + "/test.csv",
+    test = ClassificationDataset(path_to_dataset=data_args.data_dir + "/test_en.csv",
                                      label=data_args.label, tokenizer=tokenizer, text_col=data_args.text_col)
-        run_trainer(train_data=train, dev_data=dev, test_data=test, model=model, training_args=training_args,
+    run_trainer(train_data=train, dev_data=dev, test_data=test, model=model, training_args=training_args,
                     class_weights=training_args.class_weights, model_args=model_args)

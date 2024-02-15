@@ -1,0 +1,4 @@
+adapters/*
+.ipynb_checkpoints/
+code/.ipynb_checkpoints/
+code/trained adapters/checkpoints/

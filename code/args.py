@@ -16,7 +16,7 @@ class DataTrainingArguments:
     """
 
     label: Optional[str] = field(metadata={"help": "the column storing the layer for classification"})
-    testdata: Optional[str] = field(default="", metadata={"help": "dataset for inference"})
+    #testdata: Optional[str] = field(default="", metadata={"help": "dataset for inference"})
     text_col: Optional[str] = field(default="cleaned_comment", metadata={"help": "the column which stores the text"})
     data_dir: Optional[str] = field(
         default=str('5foldStratified/jlev')

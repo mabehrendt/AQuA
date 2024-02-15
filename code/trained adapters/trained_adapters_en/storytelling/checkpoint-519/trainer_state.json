@@ -1,0 +1,74 @@
+{
+  "best_metric": 0.4463069751257842,
+  "best_model_checkpoint": "trained adapters/trained_adapters_roberta_en/storytelling/checkpoint-519",
+  "epoch": 1.0,
+  "global_step": 519,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 1.0,
+      "learning_rate": 9e-05,
+      "loss": 1.2112,
+      "step": 519
+    },
+    {
+      "epoch": 1.0,
+      "eval_accuracy": 0.9043659043659044,
+      "eval_loss": 0.9986337423324585,
+      "eval_macro_f1": 0.4463069751257842,
+      "eval_precision": 0.4488973415756098,
+      "eval_recall": 0.447803707757813,
+      "eval_report_csv": "              precision    recall  f1-score   support\n\n           0       0.96      0.97      0.96      1744\n           1       0.19      0.26      0.22        86\n           2       0.00      0.00      0.00        48\n           3       0.65      0.57      0.60        46\n\n    accuracy                           0.90      1924\n   macro avg       0.45      0.45      0.45      1924\nweighted avg       0.89      0.90      0.90      1924\n",
+      "eval_report_dict": {
+        "0": {
+          "f1-score": 0.9638279692395328,
+          "precision": 0.9575551782682513,
+          "recall": 0.9701834862385321,
+          "support": 1744.0
+        },
+        "1": {
+          "f1-score": 0.21674876847290642,
+          "precision": 0.18803418803418803,
+          "recall": 0.2558139534883721,
+          "support": 86.0
+        },
+        "2": {
+          "f1-score": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 48.0
+        },
+        "3": {
+          "f1-score": 0.6046511627906976,
+          "precision": 0.65,
+          "recall": 0.5652173913043478,
+          "support": 46.0
+        },
+        "accuracy": 0.9043659043659044,
+        "macro avg": {
+          "f1-score": 0.4463069751257842,
+          "precision": 0.4488973415756098,
+          "recall": 0.447803707757813,
+          "support": 1924.0
+        },
+        "weighted avg": {
+          "f1-score": 0.8978016247041514,
+          "precision": 0.8919164090804421,
+          "recall": 0.9043659043659044,
+          "support": 1924.0
+        }
+      },
+      "eval_runtime": 5.0588,
+      "eval_samples_per_second": 380.326,
+      "eval_steps_per_second": 23.919,
+      "step": 519
+    }
+  ],
+  "max_steps": 5190,
+  "num_train_epochs": 10,
+  "total_flos": 868071611971200.0,
+  "trial_name": null,
+  "trial_params": null
+}

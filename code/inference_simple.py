@@ -5,37 +5,37 @@ from tqdm import tqdm
 import numpy as np
 import torch.nn.functional as F
 import torch
-from inference_parallel import task2identifier, task2label
+from inference_parallel import task2identifier
 import argparse
 
 
-def predict(dataloader, model, out_put_path, task2label, dataset, task):
-    label_num = task2label[task]
+def predict(dataloader, model, out_put_path, dataset, task):
     # create a dictionary with a list for each label
-    output_dic = {}
-    for i in range(label_num):
-        output_dic[i] = []
+    label_num = 4
+    output_dic = []
+#    for i in range(label_num):
+#        output_dic[i] = []
     for id, batch in enumerate(tqdm(dataloader)):
         # print(batch)
         outputs = model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"])
         predictions = outputs.logits
         #print(predictions.shape)
-        label_num = task2label[task]
-        if label_num == 1:
-            probs = np.squeeze(predictions, axis=1).tolist()
-            output_dic[0].extend(probs)
-        elif label_num == 2:
-            probs = torch.sigmoid(torch.tensor(predictions)).tolist()
-        else:
-            probs = F.softmax(torch.tensor(predictions), dim=-1).tolist()
-        if label_num > 1:
-            for i in range(label_num):
-                output_dic[i].extend([el[i] for el in probs])
-    if label_num == 1:
-        dataset[task] = output_dic[0]
-    else:
-        for i in range(label_num):
-            dataset[f"{task}_{i}"] = output_dic[i]
+        #if label_num == 1:
+        #    probs = np.squeeze(predictions, axis=1).tolist()
+        #    output_dic[0].extend(probs)
+        #elif label_num == 2:
+        #    probs = torch.sigmoid(torch.tensor(predictions)).tolist()
+        #else:
+        #probs = F.softmax(torch.tensor(predictions), dim=-1).tolist()
+        prediction = torch.argmax(predictions, axis=1).detach().numpy()
+        output_dic.extend(prediction)
+        #if label_num > 1:
+        #for i in range(label_num):
+        #    output_dic[i].extend([el[i] for el in probs])
+   # if label_num == 1:
+   #     dataset[task] = output_dic[0]
+   # else:
+    dataset[task] = output_dic
 
     dataset.to_csv(out_put_path, sep="\t", index=False)
 
@@ -56,5 +56,5 @@ if __name__ == '__main__':
 
     test = InferenceDataset(path_to_dataset=args.testdata, tokenizer=tokenizer, text_col=args.text_col)
     dataloader = DataLoader(test, batch_size=args.batch_size)
-    predict(dataloader=dataloader, model=model, out_put_path=args.output_path, task2label=task2label,
+    predict(dataloader=dataloader, model=model, out_put_path=args.output_path,
             dataset=test.dataset, task=args.task)
