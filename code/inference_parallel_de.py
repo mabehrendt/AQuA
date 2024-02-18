@@ -14,14 +14,24 @@ os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"]="2"
 
 # check for GPUs or CPU
-#if torch.cuda.is_available():
-#    device = torch.device("cuda")
-#    print('GPU in use:')
-#else:
-#    print('using the CPU')
-#    device = torch.device("cpu")
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+    print('GPU in use:')
+else:
+    print('using the CPU')
+    device = torch.device("cpu")
 
 def predict(dataloader, model, dataset, output_path, task2identifier):
+    """
+    Predict AQuA scores for a dataset.
+
+    Arguments:
+    dataloader  – 
+    model   – 
+    dataset    –
+    output_path    –
+    task2identifier    –
+    """
     output_dic = {}
     for k, v in task2identifier.items():
         output_dic[k] = []
@@ -38,8 +48,18 @@ def predict(dataloader, model, dataset, output_path, task2identifier):
         dataset[task] = preds
     score = dataset[list(task2identifier.keys())].dot(weights)
     # normalize the score
-    dataset["score"] = ((score-minval)/minmaxdif)*5
+    dataset["score"] = normalize_scores(score)
     dataset.to_csv(output_path, sep="\t", index=False)
+    
+def normalize_scores(scores, bound=5):
+    """
+    Returns the normalized scores in an interval between 0 and bound.
+
+    Arguments:
+    scores  – scores to normalize
+    bound   – upper interval bound
+    """
+    return ((scores-minval)/minmaxdif)*bound
     
 weights = [0.01482095,  0.29000763, -0.05884586, -0.02674237,
        -0.02847408,  0.07019062, -0.03768367, 0.21126469, 0.02934227,
@@ -98,15 +118,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('testdata', type=str,
                         help='path to the test data')
-    parser.add_argument('seperator', type=str,
-                        help='seperator in the csv file')
+    #parser.add_argument('separator', type=str,
+    #                    help='separator in the csv file')
     parser.add_argument('text_col', type=str, help="column name of text column")
     parser.add_argument('batch_size', type=int)
     parser.add_argument("output_path", type=str, help="path to output file")
     args = parser.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained("bert-base-multilingual-cased")
-    model = AutoAdapterModel.from_pretrained("bert-base-multilingual-cased")
+    model = AutoAdapterModel.from_pretrained("bert-base-multilingual-cased").to(device)
 #    model.to(device)
     adapter_counter = 0
 
@@ -115,12 +135,11 @@ if __name__ == '__main__':
         model.load_adapter(v, load_as="adapter%d" % adapter_counter, with_head=True,
                            set_active=True, source="hf")
         adapter_counter += 1
-
-            #model.set_active_adapters([i for i in range(adapter_counter)])
     print("loaded %d adapters" % adapter_counter)
     adapter_setup = get_dynamic_parallel(adapter_number=adapter_counter)
     model.active_adapters = adapter_setup
-    test = InferenceDataset(path_to_dataset=args.testdata, tokenizer=tokenizer, text_col=args.text_col, seperator=args.seperator)
+    model.eval()
+    test = InferenceDataset(path_to_dataset=args.testdata, tokenizer=tokenizer, text_col=args.text_col)
     dataloader = DataLoader(test, batch_size=args.batch_size)
     predict(dataloader=dataloader, model=model, dataset=test.dataset,
                 output_path=args.output_path, task2identifier=task2identifier)
