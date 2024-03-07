@@ -53,7 +53,7 @@ class InferenceDataset(Dataset):
         self.dataset = self.dataset[self.dataset[self.text_col].notna()]
 
         self.encodings = tokenizer(list(self.dataset[self.text_col]), return_tensors='pt', padding=True,
-                                   truncation=True)#.to(device)
+                                   truncation=True)
 
     def __getitem__(self, idx):
         item = {key: val[idx].clone().detach() for key, val in self.encodings.items()}

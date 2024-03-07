@@ -38,6 +38,10 @@ class ModelArguments:
     Arguments pertaining to which model/config/tokenizer we are going to fine-tune from.
     """
 
+    language: str = field(
+        metadata={"help": "Languge that is used for training"}
+    )
+    
     model_name_or_path: str = field(
         metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
     )

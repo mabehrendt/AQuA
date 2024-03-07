@@ -2,4 +2,5 @@ adapters/*
 .ipynb_checkpoints/
 code/.ipynb_checkpoints/
 code/trained adapters/checkpoints/
+code/trained_adapters/
 __pycache__/

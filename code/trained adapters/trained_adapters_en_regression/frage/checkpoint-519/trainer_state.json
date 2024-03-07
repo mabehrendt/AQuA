@@ -1,0 +1,34 @@
+{
+  "best_metric": 0.2628386318683624,
+  "best_model_checkpoint": "trained adapters/trained_adapters_en_regression/frage/checkpoint-519",
+  "epoch": 1.0,
+  "global_step": 519,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 1.0,
+      "learning_rate": 9e-05,
+      "loss": 0.3511,
+      "step": 519
+    },
+    {
+      "epoch": 1.0,
+      "eval_loss": 0.2628386318683624,
+      "eval_mae": 0.22477129101753235,
+      "eval_mse": 0.2628386318683624,
+      "eval_pearsonp": 3.67493267717425e-266,
+      "eval_pearsonr": 0.6844059398886099,
+      "eval_runtime": 14.6227,
+      "eval_samples_per_second": 131.644,
+      "eval_steps_per_second": 8.275,
+      "step": 519
+    }
+  ],
+  "max_steps": 5190,
+  "num_train_epochs": 10,
+  "total_flos": 2222472160490496.0,
+  "trial_name": null,
+  "trial_params": null
+}
