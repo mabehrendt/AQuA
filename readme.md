@@ -1,9 +1,8 @@
-## AQuA - An Additive Deliberative Quality Score with Adapters
-This repository contains the code to calculate the AQuA score. 
+# AQuA - Combining Experts’ and Non-Experts’ Views To Assess Deliberation Quality in Online Discussions Using LLMs
+This repository contains the code to calculate AQuA scores on a given dataset and to translate a dataset to German.
 
+## Inference
 
-# TODOS:
-* write read.me file
-* write script for translation
-* repo aufräumen!
-* verweis auf arg adapters
+## Translation
+
+## Paper
