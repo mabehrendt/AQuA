@@ -48,7 +48,9 @@ $ pip install -r requirements.txt
 ## References 
 Work by Neele Falk and Gabriella Lapesa:
 
+```
 Falk, N., & Lapesa, G. (2023). **Bridging Argument Quality and Deliberative Quality Annotations with Adapters.** In Findings of the Association for Computational Linguistics: EACL 2023 (pp. 2424-2443). [doi:10.18653/v1/2023.findings-eacl.187](https://aclanthology.org/2023.findings-eacl.187)
+```
 
 The data contained in this repository: 
 
