@@ -2,7 +2,7 @@
 This repository contains the code to calculate `AQuA` scores on a given dataset and to translate a dataset to German.
 
 ## Training
-We trained our Adapters 
+We trained our Adapters similar to [Falk & Lapesa (2023)]{https://github.com/Blubberli/ArgQualityAdapters}.
 
 ## Inference
 Calculate `AQuA` scores for a German dataset using the `inference_parallel_de.py` script:
