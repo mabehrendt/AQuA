@@ -6,7 +6,7 @@ We trained our Adapters similar to [Falk & Lapesa (2023)](https://github.com/Blu
 
 We trained the following adapters:
 
-* `Relevance: Does the comment have a relevance for the discussed topic? 0.20908452` 
+* `Relevance:` Does the comment have a relevance for the discussed topic? 0.20908452
 * `Fact: Is there at least one fact claiming statement in the comment? 0.18285757`
 * `Opinion: Is there a subjective statement made in the comment? -0.11069402`
 * `Justification: Is at least one statement justified in the comment? 0.29000763`
