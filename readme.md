@@ -48,11 +48,9 @@ $ pip install -r requirements.txt
 ## References 
 Work by Neele Falk and Gabriella Lapesa:
 
-```
 Falk, N., & Lapesa, G. (2023). **Bridging Argument Quality and Deliberative Quality Annotations with Adapters.** In Findings of the Association for Computational Linguistics: EACL 2023 (pp. 2424-2443). [doi:10.18653/v1/2023.findings-eacl.187](https://aclanthology.org/2023.findings-eacl.187)
-```
 
-The data contained in this repository: 
+The **datasets** contained in this repository: 
 
 **Europolis**: Gerber, M., Bächtiger, A., Shikano, S., Reber, S.,   Rohr, S. (2018). **Deliberative Abilities and Influence in a Transnational Deliberative Poll (EuroPolis).** British Journal of Political Science, 48(4), 1093–1118. [doi:10.1017/S0007123416000144](https://doi.org/10.1017/S0007123416000144)
 
