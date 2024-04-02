@@ -3,11 +3,10 @@
 Adapter predictions for individual deliberative quality indices.
 This repository contains the code to translate an English dataset to German and calculate `AQuA` scores for each entry.
 
-## Training
-We trained our Adapters similar to [Falk & Lapesa (2023)](https://github.com/Blubberli/ArgQualityAdapters).
+## Adapters
+We trained Adapters similar to [Falk & Lapesa (2023)](https://github.com/Blubberli/ArgQualityAdapters).
 
 We trained the following adapters:
-
 * `Relevance:` Does the comment have a relevance for the discussed topic?
 * `Fact:` Is there at least one fact claiming statement in the comment?
 * `Opinion:` Is there a subjective statement made in the comment?
@@ -29,22 +28,32 @@ We trained the following adapters:
 * `Discrimination:` Does the comment explicitly or implicitly contain unfair treatment of groups or individuals?
 * `Storytelling:` Does the commenter include personal stories or personal experiences?
 
-## Inference
-Calculate `AQuA` scores for a German dataset using the `inference_parallel_de.py` script:
+We explain how to calcualte scores on a given dataset step by step in the following.
+
+## 1. Requirements
+To calculate `AQuA` scores, make sure to first install all required python packages using:
 ```
-$ python inference_parallel_de.py inference_data text_col batch_size output_path
+$ pip install -r requirements.txt
 ```
 
-## Translation
-Translate an English dataset to German by running the `translate_to_german.py` script:
+## 2. Translation (optional)
+The individual Adapters that are the basis for the`AQuA` score are trained on a German dataset. For an evaluation of English data, the data can be translated to Germany by running the `translate_to_german.py` script:
 ```
 $ python translate_to_german.py dataset_path dataset_name translation_col output_path --sep (optional)
 ```
-
-## Requirements
-Install the requirements using:
+As an example, to re-create the translated version of the Europolis dataset:
 ```
-$ pip install -r requirements.txt
+$ python translate_to_german.py data/europolis/europolis_whole.csv europolis cleaned_comment data/europolis/europolis_de_translated.csv
+```
+
+## 3. Inference
+To calculate `AQuA` scores for a German dataset, use the `inference_parallel_de.py` script:
+```
+$ python inference_parallel_de.py inference_data text_col batch_size output_path
+```
+To re-create the scores on the Europolis dataset, use:
+```
+$ python inference_parallel_de.py data/europolis/europolis_de_translated.csv comment_de 8 output/europolis/europolis_inference.csv
 ```
 
 ## References 
