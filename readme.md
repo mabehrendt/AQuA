@@ -1,5 +1,7 @@
 # AQuA - Combining Experts’ and Non-Experts’ Views To Assess Deliberation Quality in Online Discussions Using LLMs
-This repository contains the code to calculate `AQuA` scores on a given dataset and to translate a dataset to German.
+AQuA, an ``**A**dditive deliberative **Qu**ality score with **A**dapters'', is a metric for assessing the quality of individual comments in online discussions based on 
+Adapter predictions for individual deliberative quality indices.
+This repository contains the code to translate an English dataset to German and calculate `AQuA` scores for each entry.
 
 ## Training
 We trained our Adapters similar to [Falk & Lapesa (2023)](https://github.com/Blubberli/ArgQualityAdapters).
