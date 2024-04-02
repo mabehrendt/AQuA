@@ -1,5 +1,5 @@
 # AQuA - Combining Experts’ and Non-Experts’ Views To Assess Deliberation Quality in Online Discussions Using LLMs
-AQuA, an ``**A**dditive deliberative **Qu**ality score with **A**dapters'', is a metric for assessing the quality of individual comments in online discussions based on 
+`AQuA`, an ``**A**dditive deliberative **Qu**ality score with **A**dapters'', is a metric for assessing the quality of individual comments in online discussions based on 
 Adapter predictions for individual deliberative quality indices.
 This repository contains the code to translate an English dataset to German and calculate `AQuA` scores for each entry.
 
