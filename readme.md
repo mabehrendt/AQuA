@@ -7,7 +7,7 @@ This repository contains the code to translate an English dataset to German and 
 We trained Adapters similar to [Falk & Lapesa (2023)](https://github.com/Blubberli/ArgQualityAdapters).
 
 We trained the following adapters:
-* `Relevance:` Does the comment have a relevance for the discussed topic?
+* `Relevance:` `Does the comment have a relevance for the discussed topic?`
 * `Fact:` Is there at least one fact claiming statement in the comment?
 * `Opinion:` Is there a subjective statement made in the comment?
 * `Justification:` Is at least one statement justified in the comment?
