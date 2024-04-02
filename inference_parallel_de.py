@@ -71,7 +71,7 @@ task2identifier = {"relevance": "trained adapters/relevance",
                    "opinion": "trained adapters/opinion",
                    "justification": "trained adapters/justification",
                    "solproposal": "trained adapters/solproposal",
-                   "addknowledge": "trained adapters/addknowledge"},
+                   "addknowledge": "trained adapters/addknowledge",
                    "question": "trained adapters/question",
 
                    "refusers": "trained adapters/refusers",
