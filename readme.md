@@ -8,25 +8,25 @@ We trained Adapters similar to [Falk & Lapesa (2023)](https://github.com/Blubber
 
 We trained the following adapters:
 * `Relevance:` `Does the comment have a relevance for the discussed topic?`
-* `Fact:` Is there at least one fact claiming statement in the comment?
-* `Opinion:` Is there a subjective statement made in the comment?
-* `Justification:` Is at least one statement justified in the comment?
-* `Solution Proposals:` Does the comment contain a proposal how an issue could be solved?
-* `Additional Knowledge:` Does the comment contain additional knowledge?
-* `Question:` Does the comment include a true, i.e., non-rhetoric question?
-* `Referencing Users:` Does the comment refer to at least one other user or to all users in the community?
-* `Referencing Medium:` Does the comment refer to the medium, the editorial team or the moderation team?
-* `Referencing Contents:` Does the comment refer to content, arguments or positions in other comments?
-* `Referencing Personal:` Does the comment refer to the person or personal characteristics of other users?
-* `Referencing Format:` Does the comment refer to the tone, language, spelling or other formal criteria other comments?
-* `Polite form of Address:` Does the comment contain welcome or farewell phrases?
-* `Respect:` Does the comment contain expressions of respect or thankfulness?
-* `Screaming:` Does the comment contain clusters of punctuation or capitalization intended to imply screaming?
-* `Vulgar:` Does the comment contain language that is inappropriate for civil discourse?
-* `Insult:` Does the comment contain insults towards one or more people?
-* `Sarcasm:` Does the comment contain biting mockery aimed at devaluing the reference object?
-* `Discrimination:` Does the comment explicitly or implicitly contain unfair treatment of groups or individuals?
-* `Storytelling:` Does the commenter include personal stories or personal experiences?
+* `Fact:` `Is there at least one fact claiming statement in the comment?`
+* `Opinion:` `Is there a subjective statement made in the comment?`
+* `Justification:` `Is at least one statement justified in the comment?`
+* `Solution Proposals:` `Does the comment contain a proposal how an issue could be solved?`
+* `Additional Knowledge:` `Does the comment contain additional knowledge?`
+* `Question:` `Does the comment include a true, i.e., non-rhetoric question?`
+* `Referencing Users:` `Does the comment refer to at least one other user or to all users in the community?`
+* `Referencing Medium:` `Does the comment refer to the medium, the editorial team or the moderation team?`
+* `Referencing Contents:` `Does the comment refer to content, arguments or positions in other comments?`
+* `Referencing Personal:` `Does the comment refer to the person or personal characteristics of other users?`
+* `Referencing Format:` `Does the comment refer to the tone, language, spelling or other formal criteria other comments?`
+* `Polite form of Address:` `Does the comment contain welcome or farewell phrases?`
+* `Respect:` `Does the comment contain expressions of respect or thankfulness?`
+* `Screaming:` `Does the comment contain clusters of punctuation or capitalization intended to imply screaming?`
+* `Vulgar:` `Does the comment contain language that is inappropriate for civil discourse?`
+* `Insult:` `Does the comment contain insults towards one or more people?`
+* `Sarcasm:` `Does the comment contain biting mockery aimed at devaluing the reference object?`
+* `Discrimination:` `Does the comment explicitly or implicitly contain unfair treatment of groups or individuals?`
+* `Storytelling:` `Does the commenter include personal stories or personal experiences?`
 
 We explain how to calcualte scores on a given dataset step by step in the following.
 
