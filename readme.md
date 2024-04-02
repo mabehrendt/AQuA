@@ -1,4 +1,4 @@
-# AQuA - Combining Experts’ and Non-Experts’ Views To Assess Deliberation Quality in Online Discussions Using LLMs
+## AQuA - Combining Experts’ and Non-Experts’ Views To Assess Deliberation Quality in Online Discussions Using LLMs
 `AQuA`, an ``**A**dditive deliberative **Qu**ality score with **A**dapters'', is a metric for assessing the quality of individual comments in online discussions based on 
 Adapter predictions for individual deliberative quality indices.
 This repository contains the code to translate an English dataset to German and calculate `AQuA` scores for each entry.
@@ -37,13 +37,13 @@ We trained the following adapters:
 
 We explain how to calcualte scores on a given dataset step by step in the following.
 
-## 1. Requirements
+### 1. Requirements
 To calculate `AQuA` scores, make sure to first install all required python packages using:
 ```
 $ pip install -r requirements.txt
 ```
 
-## 2. Translation (optional)
+### 2. Translation (optional)
 The individual Adapters that are the basis for the`AQuA` score are trained on a German dataset. For an evaluation of English data, the data can be translated to Germany by running the `translate_to_german.py` script:
 ```
 $ python translate_to_german.py dataset_path dataset_name translation_col output_path --sep (optional)
@@ -53,7 +53,7 @@ As an example, to re-create the translated version of the Europolis dataset:
 $ python translate_to_german.py data/europolis/europolis_whole.csv europolis cleaned_comment data/europolis/europolis_de_translated.csv
 ```
 
-## 3. Inference
+### 3. Inference
 To calculate `AQuA` scores for a German dataset, use the `inference_parallel_de.py` script:
 ```
 $ python inference_parallel_de.py inference_data text_col batch_size output_path
