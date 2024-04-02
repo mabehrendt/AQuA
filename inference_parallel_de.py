@@ -126,7 +126,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained("bert-base-multilingual-cased")
-    model = AutoAdapterModel.from_pretrained("bert-base-multilingual-cased").to(device)
+    model = AutoAdapterModel.from_pretrained("bert-base-multilingual-cased")
     adapter_counter = 0
 
     for k, v in task2identifier.items():
@@ -137,8 +137,8 @@ if __name__ == '__main__':
     print("loaded %d adapters" % adapter_counter)
     adapter_setup = get_dynamic_parallel(adapter_number=adapter_counter)
     model.active_adapters = adapter_setup
-    model.eval()
     test = InferenceDataset(path_to_dataset=args.inference_data, tokenizer=tokenizer, text_col=args.text_col)
     dataloader = DataLoader(test, batch_size=args.batch_size)
+    model = model.cuda()
     predict(dataloader=dataloader, model=model, dataset=test.dataset,
                 output_path=args.output_path, task2identifier=task2identifier)
