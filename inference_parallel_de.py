@@ -57,62 +57,68 @@ def normalize_scores(scores, bound=5):
     """
     return ((scores-minval)/minmaxdif)*bound
     
-weights = [0.01482095,  0.29000763, -0.05884586, -0.02674237,
-       -0.02847408,  0.07019062, -0.03768367, 0.21126469, 0.02934227,
-       -0.07331445,  0.39535126, -0.11069402,  0.00732909,
-       -0.15170863, -0.01900971, 0.10628146,  0.18285757,  0.20908452, -0.04995486,
-        0.14655912]
+weights = [0.20908452, 0.18285757, -0.11069402, 0.29000763, 0.39535126,
+        0.14655912, -0.07331445, -0.03768367, 0.07019062, -0.02847408,
+        0.21126469, -0.02674237, 0.01482095, 0.00732909, -0.01900971,
+        -0.04995486, -0.05884586, -0.15170863, 0.02934227, 0.10628146]
 
 maxval = 4.989267539999999
 minval = -1.66928295
 minmaxdif = maxval-minval
 
-task2identifier = {"anrede": "trained adapters/trained_adapters_de/anrede",
-                   "begründung": "trained adapters/trained_adapters_de/begründung",
-                   "beleidigung": "trained adapters/trained_adapters_de/beleidigung",
-                   "bezugform": "trained adapters/trained_adapters_de/bezugform",
-                   "bezuginhalt": "trained adapters/trained_adapters_de/bezuginhalt",
-                   "bezugmedium": "trained adapters/trained_adapters_de/bezugmedium",
-                   "bezugnutzer": "trained adapters/trained_adapters_de/bezugnutzer",
-                   "bezugpersönlich": "trained adapters/trained_adapters_de/bezugpersönlich",
-                   "diskriminierung": "trained adapters/trained_adapters_de/diskriminierung",
-                   "frage": "trained adapters/trained_adapters_de/frage",
-                   "lösungsvorschlag": "trained adapters/trained_adapters_de/lösungsvorschlag",
-                   "meinung": "trained adapters/trained_adapters_de/meinung",
-                   "respekt": "trained adapters/trained_adapters_de/respekt",
-                   "sarkasmus": "trained adapters/trained_adapters_de/sarkasmus",
-                   "schreien": "trained adapters/trained_adapters_de/schreien",
-                   "storytelling": "trained adapters/trained_adapters_de/storytelling",
-                   "tatsache": "trained adapters/trained_adapters_de/tatsache",
-                   "themenbezug": "trained adapters/trained_adapters_de/themenbezug",
-                   "vulgär": "trained adapters/trained_adapters_de/vulgär",
-                   "zusatzwissen": "trained adapters/trained_adapters_de/zusatzwissen"}
+task2identifier = {"relevance": "trained adapters/relevance",
+                   "fact": "trained adapters/fact",
+                   "opinion": "trained adapters/opinion",
+                   "justification": "trained adapters/justification",
+                   "solproposal": "trained adapters/solproposal",
+                   "addknowledge": "trained adapters/addknowledge"},
+                   "question": "trained adapters/question",
 
-task2weight = {"anrede": 0.01482095,
-                   "begründung": 0.29000763,
-                   "beleidigung": -0.05884586,
-                   "bezugform": -0.02674237,
-                   "bezuginhalt":-0.02847408,
-                   "bezugmedium":0.07019062,
-                   "bezugnutzer":-0.03768367,
-                   "bezugpersönlich":0.21126469,
-                   "diskriminierung":0.02934227,
-                   "frage":-0.07331445,
-                   "lösungsvorschlag":0.39535126,
-                   "meinung": -0.11069402,
-                   "respekt": 0.00732909,
-                   "sarkasmus":-0.15170863,
-                   "schreien": -0.01900971,
-                   "storytelling": 0.10628146,
-                   "tatsache":0.18285757,
-                   "themenbezug": 0.20908452,
-                   "vulgär": -0.04995486,
-                   "zusatzwissen": 0.14655912}
+                   "refusers": "trained adapters/refusers",
+                   "refmedium": "trained adapters/refmedium",
+                   "refcontents": "trained adapters/refcontents",
+                   "refpersonal": "trained adapters/refpersonal",
+                   "refformat": "trained adapters/refformat",
+
+                   "address": "trained adapters/address",
+                   "respect": "trained adapters/respect",
+                   "screaming": "trained adapters/screaming",
+                   "vulgar": "trained adapters/vulgar",
+                   "insult": "trained adapters/insult",
+                   "sarcasm": "trained adapters/sarcasm",
+                   "discrimination": "trained adapters/discrimination",
+
+                   "storytelling": "trained adapters/storytelling"}
+
+
+task2weight = {"relevance": 0.20908452,
+                   "fact":0.18285757,
+                   "opinion": -0.11069402,
+                   "justification": 0.29000763,
+                   "solproposal":0.39535126,
+                   "addknowledge": 0.14655912,
+                   "question":-0.07331445,
+
+                   "refusers":-0.03768367,
+                   "refmedium":0.07019062,
+                   "refcontents":-0.02847408,
+                   "refpersonal":0.21126469,
+                   "refformat": -0.02674237,
+
+                   "address": 0.01482095,
+                   "respect": 0.00732909,
+                   "screaming": -0.01900971,
+                   "vulgar": -0.04995486,
+                   "insult": -0.05884586,
+                   "sarcasm":-0.15170863,
+                   "discrimination":0.02934227,
+
+                   "storytelling": 0.10628146}
 
 if __name__ == '__main__':
     # read in arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('testdata', type=str,
+    parser.add_argument('inference_data', type=str,
                         help='path to the test data')
     parser.add_argument('text_col', type=str, help="column name of text column")
     parser.add_argument('batch_size', type=int)
@@ -132,7 +138,7 @@ if __name__ == '__main__':
     adapter_setup = get_dynamic_parallel(adapter_number=adapter_counter)
     model.active_adapters = adapter_setup
     model.eval()
-    test = InferenceDataset(path_to_dataset=args.testdata, tokenizer=tokenizer, text_col=args.text_col)
+    test = InferenceDataset(path_to_dataset=args.inference_data, tokenizer=tokenizer, text_col=args.text_col)
     dataloader = DataLoader(test, batch_size=args.batch_size)
     predict(dataloader=dataloader, model=model, dataset=test.dataset,
                 output_path=args.output_path, task2identifier=task2identifier)
