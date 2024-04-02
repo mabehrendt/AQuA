@@ -32,8 +32,13 @@ def predict(dataloader, model, dataset, output_path, task2identifier):
     for k, v in task2identifier.items():
         output_dic[k] = []
     for id, batch in enumerate(tqdm(dataloader)):
+        for k, v in batch.items():
+            #if isinstance(v, torch.Tensor):
+            batch[k] = v.to(device)
         # output length = num adapters
-        outputs = model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"])
+        with torch.no_grad():
+            # output length = num adapters
+            outputs = model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"])
         for i in range(len(outputs)):
             task = list(task2identifier.keys())[i]
             # gives predictions for one batch for one adapter
