@@ -43,11 +43,13 @@ def predict(dataloader, model, dataset, output_path, task2identifier):
             task = list(task2identifier.keys())[i]
             # gives predictions for one batch for one adapter
             predictions = outputs[i].logits
-            prediction = torch.argmax(predictions, axis=1).detach().numpy()
+            prediction = torch.argmax(predictions, axis=1).detach().cpu().numpy()
             output_dic[task].extend(prediction)
+    # add suffix to adapter predictions to not overwrite other annotations in the data
     for task, preds in output_dic.items():
-        dataset[task] = preds
-    score = dataset[list(task2identifier.keys())].dot(weights)
+        dataset[task+"_ad"] = torch.tensor(preds).detach().cpu().numpy()
+    adapters = task2identifier.keys()
+    score = dataset[list([s + "_ad" for s in adapters])].dot(weights)
     # normalize the score
     dataset["score"] = normalize_scores(score)
     dataset.to_csv(output_path, sep="\t", index=False)
