@@ -7,7 +7,12 @@ This repository contains the code to translate an English dataset to German and 
 If you use the `AQuA` score in a scientific publication, we would appreciate using the following citations:
 
 ```
-
+@article{behrendt2024aqua,
+  title={AQuA-Combining Experts' and Non-Experts' Views To Assess Deliberation Quality in Online Discussions Using LLMs},
+  author={Behrendt, Maike and Wagner, Stefan Sylvius and Ziegele, Marc and Wilms, Lena and Stoll, Anke and Heinbach, Dominique and Harmeling, Stefan},
+  journal={arXiv preprint arXiv:2404.02761},
+  year={2024}
+}
 ```
 
 ## Adapters
