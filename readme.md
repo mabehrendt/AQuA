@@ -14,6 +14,7 @@ If you use the `AQuA 🌊` score in a scientific publication, we would appreciat
   year={2024}
 }
 ```
+Behrendt, M., Wagner, S. S., Ziegele, M., Wilms, L., Stoll, A., Heinbach, D., & Harmeling, S. (2024). **AQuA-Combining Experts' and Non-Experts' Views To Assess Deliberation Quality in Online Discussions Using LLMs.** arXiv preprint arXiv:2404.02761. [https://arxiv.org/pdf/2404.02761](https://arxiv.org/pdf/2404.02761)
 
 ## Adapters
 We trained Adapters similar to [Falk & Lapesa (2023)](https://github.com/Blubberli/ArgQualityAdapters).
