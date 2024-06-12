@@ -7,12 +7,18 @@ This repository contains the code to translate an English dataset to German and 
 If you use the `AQuA 🌊` score in a scientific publication, we would appreciate using the following citations:
 
 ```
-@article{behrendt2024aqua,
-  title={AQuA-Combining Experts' and Non-Experts' Views To Assess Deliberation Quality in Online Discussions Using LLMs},
-  author={Behrendt, Maike and Wagner, Stefan Sylvius and Ziegele, Marc and Wilms, Lena and Stoll, Anke and Heinbach, Dominique and Harmeling, Stefan},
-  journal={arXiv preprint arXiv:2404.02761},
-  year={2024}
-}
+@inproceedings{behrendt-etal-2024-aqua,
+    title = "{AQ}u{A} {--} Combining Experts{'} and Non-Experts{'} Views To Assess Deliberation Quality in Online Discussions Using {LLM}s",
+    author = "Behrendt, Maike  and Wagner, Stefan Sylvius  and Ziegele, Marc  and Wilms, Lena  and Stoll, Anke  and Heinbach, Dominique  and Harmeling, Stefan",
+    editor = "Hautli-Janisz, Annette  and Lapesa, Gabriella  and Anastasiou, Lucas  and Gold, Valentin  and Liddo, Anna De  and Reed, Chris",
+    booktitle = "Proceedings of the First Workshop on Language-driven Deliberation Technology (DELITE) @ LREC-COLING 2024",
+    month = may,
+    year = "2024",
+    address = "Torino, Italia",
+    publisher = "ELRA and ICCL",
+    url = "https://aclanthology.org/2024.delite-1.1",
+    pages = "1--12",
+    }
 ```
 Behrendt, M., Wagner, S. S., Ziegele, M., Wilms, L., Stoll, A., Heinbach, D., & Harmeling, S. (2024). **AQuA-Combining Experts' and Non-Experts' Views To Assess Deliberation Quality in Online Discussions Using LLMs.** arXiv preprint arXiv:2404.02761. [https://arxiv.org/pdf/2404.02761](https://arxiv.org/pdf/2404.02761)
 
