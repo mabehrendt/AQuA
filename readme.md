@@ -20,7 +20,7 @@ If you use the `AQuA 🌊` score in a scientific publication, we would appreciat
     pages = "1--12",
     }
 ```
-Behrendt, M., Wagner, S. S., Ziegele, M., Wilms, L., Stoll, A., Heinbach, D., & Harmeling, S. (2024). **AQuA-Combining Experts' and Non-Experts' Views To Assess Deliberation Quality in Online Discussions Using LLMs.** arXiv preprint arXiv:2404.02761. [https://arxiv.org/pdf/2404.02761](https://arxiv.org/pdf/2404.02761)
+Maike Behrendt, Stefan Sylvius Wagner, Marc Ziegele, Lena Wilms, Anke Stoll, Dominique Heinbach, and Stefan Harmeling. 2024. [AQuA – Combining Experts’ and Non-Experts’ Views To Assess Deliberation Quality in Online Discussions Using LLMs.](https://aclanthology.org/2024.delite-1.1.pdf) In Proceedings of the First Workshop on Language-driven Deliberation Technology (DELITE) @ LREC-COLING 2024, pages 1–12, Torino, Italia. ELRA and ICCL.
 
 ## Adapters
 We trained Adapters similar to [Falk & Lapesa (2023)](https://github.com/Blubberli/ArgQualityAdapters).
