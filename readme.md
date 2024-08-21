@@ -66,7 +66,7 @@ $ python translate_to_german.py data/europolis/europolis_whole.csv europolis cle
 ```
 
 ### 3. Inference
-To calculate `AQuA 🌊` scores for a German dataset, use the `inference_parallel_de.py` script:
+To calculate `AQuA 🌊` scores for a German dataset, use the `inference_parallel_de.py` script (all example csv files are tab separated - the script also assumes that the loaded csv file is tab separated):
 ```
 $ python inference_parallel_de.py inference_data text_col batch_size output_path
 ```
