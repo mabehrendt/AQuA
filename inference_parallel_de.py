@@ -146,6 +146,7 @@ if __name__ == '__main__':
     model.active_adapters = adapter_setup
     test = InferenceDataset(path_to_dataset=args.inference_data, tokenizer=tokenizer, text_col=args.text_col)
     dataloader = DataLoader(test, batch_size=args.batch_size)
-    model = model.cuda()
+    if torch.cuda.is_available():
+        model = model.cuda()
     predict(dataloader=dataloader, model=model, dataset=test.dataset,
                 output_path=args.output_path, task2identifier=task2identifier)
